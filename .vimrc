@@ -9,6 +9,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'lervag/vimtex'
 call plug#end()
 let g:SimpylFold_docstring_preview=1
 " *********************************
@@ -33,6 +34,8 @@ set textwidth=79
 set expandtab
 set autoindent
 set fileformat=unix
+let g:ycm_auto_trigger=0
+let g:ycm_autoclose_preview_window_after_completeion=1
 " ******************************
 
 
@@ -46,11 +49,9 @@ nnoremap <leader>f za
 
 
 " ************  INSERT REMAPS ************
-" Escape with 'jj' or '`'
+" Escape with 'jj'
 inoremap jj <Esc>
-inoremap ` <Esc>
 " ***************************************
-
 
 
 " ************ PYTHON ************
