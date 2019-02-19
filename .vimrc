@@ -42,7 +42,9 @@ let g:syntastic_quiet_messages = {
         \ ['Unused variable',
             \ 'conform to snake_case', 
             \ 'conform to UPPER_CASE', 
-            \ 'too many local variables'] }
+            \ 'too many local variables',
+            \ 'Redefining built-in',
+            \ 'wildcard import'] }
 " ************ PLUGIN SETTINGS ************
 
 
