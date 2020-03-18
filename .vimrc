@@ -4,8 +4,8 @@ let mapleader = "\<Space>"
 autocmd  BufEnter * silent! lcd %:p:h
 
 " ************ PLUGINS ************
-call plug#begin('~/.vim/bundle/plugged')
-" insert plugins below
+call plug#begin('~/.vim/plugged')
+" insert plugins below [use :PlugInstall]
 Plug 'tmhedberg/SimpylFold'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/indentpython.vim'
@@ -59,6 +59,7 @@ colorscheme zenburn
 set number
 set relativenumber
 " set code folding
+set so=999
 set foldenable
 set foldmethod=indent
 set foldlevel=10
@@ -92,6 +93,7 @@ set textwidth=79
 set expandtab
 set autoindent
 set fileformat=unix
+set colorcolumn=80
 " ************ FORMATTING ************
 
 
@@ -113,7 +115,7 @@ nnoremap <C-H> <C-W>h
 nnoremap <leader>/ :nohlsearch<CR>:let @/=""<CR>
 nnoremap <leader>t :vertical terminal<CR>
 " delete lines in insert mode
-inoremap dd <Esc>ddi
+inoremap <leader>dd <Esc>ddi
 " ************ REMAPS ************
 
 
