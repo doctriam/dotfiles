@@ -18,6 +18,9 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'kien/ctrlp.vim'
 Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'tpope/vim-fugitive'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'vimwiki/vimwiki'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 " ************ PLUGINS ************
 
@@ -73,7 +76,7 @@ set hlsearch " highlight all search matches
 set smartcase " case-sensitive search on caps
 set ignorecase " ignore case in search
 " share system clipboard
-set clipboard=unnamed
+set clipboard=xfce4-clipman
 " natural split
 set splitbelow splitright
 " redraw
