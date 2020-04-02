@@ -95,6 +95,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ----------------CUSTOMIZATION--------------------------------------------------
+# ----------------CUSTOMIZATION-------------------------------------------------
 export PS1="\[\e[00;31;47m\][\[\e[m\]\[\e[1;33;47m\]\u\[\e[m\]\[\e[00;31;47m\]]\
 [\[\e[m\]\[\e[01;30;47m\]\w\[\e[00;31;47m\]]\[\e[m\]\[\e[01;34;47m\]$ \[\e[m\]"
+
+# ----------------VULKAN--------------------------------------------------------
+export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json:/usr/share/vulkan/icd.d/primus_vk_wrapper.json
+

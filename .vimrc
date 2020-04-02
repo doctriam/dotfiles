@@ -2,6 +2,10 @@ autocmd!
 set nocompatible
 let mapleader = "\<Space>"
 autocmd  BufEnter * silent! lcd %:p:h
+syntax enable
+filetype plugin on
+set path +=**
+set wildmenu
 
 " ************ PLUGINS ************
 call plug#begin('~/.vim/plugged')
