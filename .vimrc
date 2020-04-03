@@ -1,30 +1,33 @@
 autocmd!
-set nocompatible
-let mapleader = "\<Space>"
-autocmd  BufEnter * silent! lcd %:p:h
-syntax enable
-filetype plugin on
-set path +=**
-set wildmenu
+" Remove all autocmmands for current group
+set nocompatible  "Disable vi compatibility mode
+let mapleader = "\<Space>"  "Set modkey to spacebar
+autocmd  BufEnter * silent! lcd %:p:h  "Set working directory based on buffer
+  " Required for vim fuzzy finder
+syntax enable  "Enable syntax highlighting
+filetype plugin on "Enable filetype detection and plugin capabilities
+set path +=**  "Set search subdirectories
+set wildmenu  "Display all matching searches on Tab Tab
 
-" ************ PLUGINS ************
+" *********** PLUGINS ************
 call plug#begin('~/.vim/plugged')
 " insert plugins below [use :PlugInstall]
-Plug 'tmhedberg/SimpylFold'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'lervag/vimtex'
-Plug 'vim-syntastic/syntastic'
-Plug 'nvie/vim-flake8'
-Plug 'jnurmine/Zenburn'
-Plug 'altercation/vim-colors-solarized'
-Plug 'kien/ctrlp.vim'
-Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plug 'tpope/vim-fugitive'
-Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'vimwiki/vimwiki'
-Plug 'airblade/vim-gitgutter'
+    " Tools"
+Plug 'scrooloose/nerdtree'  "File Directory
+Plug 'vimwiki/vimwiki'  "Personal Wiki
+Plug 'lervag/vimtex'  "Latex Plugin
+    " Code Enhancements"
+Plug 'Valloric/YouCompleteMe'  "Code Autocomplete
+Plug 'vim-syntastic/syntastic'  "Syntax verification
+Plug 'tmhedberg/SimpylFold'  "Python Fold
+Plug 'vim-scripts/indentpython.vim'  "Python Indent
+Plug 'nvie/vim-flake8'  "Python Style Checker
+Plug 'martinda/Jenkinsfile-vim-syntax'  "Jenkins Syntax
+Plug 'airblade/vim-gitgutter'  "Git In-File Diff Tool
+    " Superficial
+Plug 'ap/vim-css-color'  "CSS Color Display
+Plug 'jnurmine/Zenburn'  "Zenburn Theme
+Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}  "Stylized Info
 call plug#end()
 " ************ PLUGINS ************
 
@@ -41,9 +44,9 @@ let g:ycm_autoclose_preview_window_after_completeion=1
 set laststatus=2
 " keymap for nerdtree
 nnoremap <C-n> :NERDTreeToggle<CR>
-let NERDTreeWinPos='right'
+let NERDTreeWinPos='left'
 let NERDTreeChDirMode='2'
-" Syntastic error messages
+" Syntastic error messages; hide errors featuring these strings
 let g:syntastic_quiet_messages = {
     \ "regex": 
         \ ['Unused variable',
@@ -81,7 +84,7 @@ set smartcase " case-sensitive search on caps
 set ignorecase " ignore case in search
 " share system clipboard
 set clipboard=xfce4-clipman
-" natural split
+" natural split; new split to right or bottom
 set splitbelow splitright
 " redraw
 set lazyredraw " minimize redraw during macros
@@ -108,8 +111,7 @@ set colorcolumn=80
 " Escape with jj
 inoremap jj <Esc>
 vnoremap jj <Esc>
-" save from insert mode
-inoremap :wa <Esc>:wa
+nnoremap jj <Esc> 
 " reload .vimrc 
 nnoremap <leader>rv :so $MYVIMRC<CR>
 " fold code
@@ -119,10 +121,8 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+" clear search results
 nnoremap <leader>/ :nohlsearch<CR>:let @/=""<CR>
-nnoremap <leader>t :vertical terminal<CR>
-" delete lines in insert mode
-inoremap <leader>dd <Esc>ddi
 " ************ REMAPS ************
 
 
