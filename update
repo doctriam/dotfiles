@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git pull -v
+./updateSDDM -v
+cd ~/.config/awesome
+git pull -v
