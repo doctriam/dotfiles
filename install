@@ -90,11 +90,11 @@ sudo rm -r roku-cli -f -v
 rm -r abstractdark
 git clone https://github.com/3ximus/abstractdark-sddm-theme abstractdark
 rm abstractdark/Main.qml -v
-mv $HOME/dotfiles/sddm/Main.qml abstractdark/Main.qml -v
+cp $HOME/dotfiles/sddm/Main.qml abstractdark/Main.qml -v
 sudo rm -r /usr/share/sddm/themes/abstractdark -v
 sudo mv abstractdark /usr/share/sddm/themes/abstractdark -v
 sudo rm /etc/sddm.conf -v
-sudo mv $HOME/dotfiles/sddm/sddm.conf /etc/sddm.conf -v
+sudo cp $HOME/dotfiles/sddm/sddm.conf /etc/sddm.conf -v
 echo "#----------END: Install From Github-----------------------------------\n"
 echo -en "\n"
 # -----------------------------------------------------------------------------
