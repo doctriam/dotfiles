@@ -3,6 +3,7 @@
 
 
 # -------------- Install Dotfiles/RCs -----------------------------------------
+echo "#-------------- Dotfiles/RCs------------------------------------------\n"
 BASHRC=/$HOME/.bashrc
 BASHALIAS=/$HOME/.bash_aliases
 VIMRC=/$HOME/.vimrc
@@ -28,12 +29,50 @@ ln -s $HOME/dotfiles/.bashrc $BASHRC -v
 ln -s $HOME/dotfiles/.bash_aliases $BASHALIAS -v
 ln -s $HOME/dotfiles/terminalrc $TERMINALRC -v
 ln -s $HOME/dotfiles/.vimrc $VIMRC -v
+echo "#----------END: Dotfiles/RCs------------------------------------------\n"
 # -----------------------------------------------------------------------------
 
-# Pacman: Install Recommended software
-sudo ./pac
+# -------------- Pacman: Install Recommended Software -------------------------
+echo "#-------------- Install Recommended Software--------------------------\n"
+packages=(
+awesome
+blueman
+brave
+cmake
+git
+thunar
+viewnior
+vim
+xclip
+xfce4-terminal
+)
+
+for pkg in "${packages[@]}"
+do {
+        if sudo pacman -Qi $pkg > /dev/null 2>&1 ; then
+            echo -en "$pkg already installed\n"
+        else
+            echo -en "Installing $pkg...\n"
+            sudo pacman -S $pkg --noconfirm > /dev/null
+            if pacman -Qi $pkg > /dev/null 2>&1
+            then
+                echo -en "$pkg is now installed\n"
+            else
+                echo -en "Installing $pkg FAILED\n"
+                deps = 1
+            fi
+        fi
+}
+done
+[[ $deps -ne 1  ]] && echo -en "\nSoftware installation complete\n" || { 
+    echo -en "\nCheck for FAILED packages\n";exit 1; 
+}
+echo "#----------END: Install Recommended Software--------------------------\n"
+echo -en "\n"
+# -----------------------------------------------------------------------------
 
 # -------------- Install Awesome WM Config ------------------------------------
+echo "#-------------- Install Awesome WM Profile ---------------------------\n"
 AWESOMERC=~/.config/awesome/rc.lua
 if [-f "$AWESOMERC" ]; then
     echo -en "\nAwesome WM profile already installed\n"
@@ -44,5 +83,6 @@ else
     git clone https://github.com/deficient/calendar ~/.config/awesome/calendar
     git clone https://github.com/deficient/volume-control ~/.config/awesome/volume-control
 fi
+echo "#----------END: Install Awesome WM Profile ---------------------------\n"
 # -----------------------------------------------------------------------------
 
