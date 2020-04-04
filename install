@@ -1,0 +1,34 @@
+#!/bin/bash
+# Installer for dotfiles initializers
+
+
+# -------------- Install Dotfiles/RCs -----------------------------------------
+BASHRC=/$HOME/.bashrc
+BASHALIAS=/$HOME/.bash_aliases
+VIMRC=/$HOME/.vimrc
+TERMINALRC=/$HOME/.config/xfce4/terminal/terminalrc
+
+if [ -f "$BASHRC"  ]; then
+    rm $BASHRC -v
+fi
+
+if [ -f "$BASHALIAS"  ]; then
+    rm $BASHALIAS -v
+fi
+
+if [ -f "$VIMRC"  ]; then
+    rm $VIMRC -v
+fi
+
+if [ -f "$TERMINALRC"  ]; then
+    rm $TERMINALRC -v
+fi
+
+ln -s $HOME/dotfiles/.bashrc $BASHRC -v
+ln -s $HOME/dotfiles/.bash_aliases $BASHALIAS -v
+ln -s $HOME/dotfiles/terminalrc $TERMINALRC -v
+ln -s $HOME/dotfiles/.vimrc $VIMRC -v
+# -----------------------------------------------------------------------------
+
+# Pacman Installation
+sudo ./pac
