@@ -1,6 +1,7 @@
 # Doctriam Dotfiles
 For myself, my dotfiles with an installer to automate symlinks in Manjaro
 XFCE for bashrc, bash aliases, vimrc, and terminalrc (xfce4-terminal).
+Installer also downloads and Awesome WM profile.
 
 ## Installation
 Install GIT.  In Manjaro XFCE:
