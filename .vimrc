@@ -19,15 +19,17 @@ Plug 'lervag/vimtex'  "Latex Plugin
     " Code Enhancements"
 Plug 'Valloric/YouCompleteMe'  "Code Autocomplete
 Plug 'vim-syntastic/syntastic'  "Syntax verification
+Plug 'airblade/vim-gitgutter'  "Git In-File Diff Tool
+Plug 'jiangmiao/auto-pairs' "Auto-creates bracket pairs
 Plug 'tmhedberg/SimpylFold'  "Python Fold
 Plug 'vim-scripts/indentpython.vim'  "Python Indent
 Plug 'nvie/vim-flake8'  "Python Style Checker
 Plug 'martinda/Jenkinsfile-vim-syntax'  "Jenkins Syntax
-Plug 'airblade/vim-gitgutter'  "Git In-File Diff Tool
     " Superficial
 Plug 'ap/vim-css-color'  "CSS Color Display
-Plug 'jnurmine/Zenburn'  "Zenburn Theme
-Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}  "Stylized Info
+Plug 'jnurmine/Zenburn'  "vim theme
+Plug 'junegunn/seoul256.vim'  "lightline theme
+Plug 'itchyny/lightline.vim'  "Stylized Info
 call plug#end()
 " ************ PLUGINS ************
 
@@ -40,8 +42,10 @@ let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:ycm_auto_trigger=0
 let g:ycm_autoclose_preview_window_after_completeion=1
-" required for powerline
+" lightline
 set laststatus=2
+set noshowmode
+let g:lightline = { 'colorscheme': 'seoul256' }
 " keymap for nerdtree
 nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeWinPos='left'
@@ -111,7 +115,6 @@ set colorcolumn=80
 " Escape with jj
 inoremap jj <Esc>
 vnoremap jj <Esc>
-nnoremap jj <Esc> 
 " reload .vimrc 
 nnoremap <leader>rv :so $MYVIMRC<CR>
 " fold code
