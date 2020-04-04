@@ -77,12 +77,12 @@ Rectangle {
 
     Rectangle {
       id: clockContainer
-      width: parent.width / 2
+      width: parent.width / 4
       height: parent.height * 0.2
       color: "transparent"
-      anchors.left: parent.left
+      anchors.right: parent.right
       anchors.verticalCenter: parent.verticalCenter
-      anchors.leftMargin: 40
+      anchors.rightMargin: 40
 
       Clock {
         id: clock
@@ -93,34 +93,24 @@ Rectangle {
     }
 
     Rectangle {
-      width: parent.width / 2
+      width: parent.width / 4
       height: parent.height * 0.3
       color: "transparent"
-	  anchors.leftMargin: 40
+	  anchors.rightMargin: 40
       anchors.top: clockContainer.bottom
-      anchors.left: parent.left
+      anchors.right: parent.right
       clip: true
 
       Item {
         id: usersContainer
-        width: 3 * parent.width / 4;
+        width: parent.width;
 		height: parent.height
 
         Column {
           id: nameColumn
           width: parent.width * 0.4
-          spacing: 10
-          anchors.margins: 10
-
-          Text {
-            id: lblName
-            width: parent.width
-            text: textConstants.userName
-            font.family: textFont.name
-            font.bold: true
-            font.pixelSize: 16
-            color: "white"
-          }
+          spacing: 0
+          anchors.margins: 0
 
           TextBox {
             id: name
@@ -148,6 +138,22 @@ Rectangle {
             font.pixelSize: 12
 			color: "white"
           }
+          ComboBox {
+            id: session
+            width: parent.width
+            height: 30
+            anchors.left: name.left
+            color: "#25000000"
+            textColor: "white"
+            borderColor: "transparent"
+            hoverColor: "#073642"
+            arrowColor: "#25000000"
+
+            model: sessionModel
+            index: sessionModel.lastIndex
+
+            KeyNavigation.backtab: btnShutdown; KeyNavigation.tab: layoutBox
+          }
         }
 
         Column {
@@ -156,16 +162,6 @@ Rectangle {
           spacing: 10
           anchors.margins: 10
           anchors.left: nameColumn.right
-
-          Text {
-            id: lblPassword
-            width: parent.width
-            text: textConstants.password
-            font.family: textFont.name
-            font.bold: true
-            font.pixelSize: 16
-            color: "white"
-          }
 
           PasswordBox {
             id: password
@@ -230,75 +226,6 @@ Rectangle {
         color: "transparent"
       }
 
-      ComboBox {
-        id: session
-        width: 245
-        height: 20
-        anchors.verticalCenter: parent.verticalCenter
-        color: "#25000000"
-        textColor: "white"
-        borderColor: "transparent"
-        hoverColor: "#073642"
-        arrowColor: "#25000000"
-
-        model: sessionModel
-        index: sessionModel.lastIndex
-
-        KeyNavigation.backtab: btnShutdown; KeyNavigation.tab: layoutBox
-      }
-
-      Text {
-        height: parent.height
-        anchors.verticalCenter: parent.verticalCenter
-
-        font.family: textFont.name
-        font.pixelSize: 16
-        font.bold: true
-        verticalAlignment: Text.AlignVCenter
-        color: "white"
-      }
-
-      ComboBox {
-        id: layoutBox
-
-        model: keyboard.layouts
-        index: keyboard.currentLayout
-        width: 50
-        height: 20
-        anchors.verticalCenter: parent.verticalCenter
-        color: "#25000000"
-        textColor: "white"
-        borderColor: "transparent"
-        hoverColor: "#073642"
-        arrowIcon: "arrow.svg"
-        arrowColor: "#25000000"
-
-        onValueChanged: keyboard.currentLayout = id
-
-        Connections {
-          target: keyboard
-
-          onCurrentLayoutChanged: combo.index = keyboard.currentLayout
-        }
-
-        rowDelegate: Rectangle {
-          color: "transparent"
-
-          Text {
-            anchors.margins: 4
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-
-            verticalAlignment: Text.AlignVCenter
-
-            text: modelItem ? modelItem.modelData.shortName : "zz"
-            font.family: textFont.name
-            font.pixelSize: 14
-            color: "white"
-          }
-        }
-        KeyNavigation.backtab: session; KeyNavigation.tab: name
-      }
     }
 
     Row {
