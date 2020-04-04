@@ -30,5 +30,19 @@ ln -s $HOME/dotfiles/terminalrc $TERMINALRC -v
 ln -s $HOME/dotfiles/.vimrc $VIMRC -v
 # -----------------------------------------------------------------------------
 
-# Pacman Installation
+# Pacman: Install Recommended software
 sudo ./pac
+
+# -------------- Install Awesome WM Config ------------------------------------
+AWESOMERC=~/.config/awesome/rc.lua
+if [-f "$AWESOMERC" ]; then
+    echo -en "\nAwesome WM profile already installed\n"
+else
+    git clone https://github.com/doctriam/awesomerc ~/.config/awesome
+    rm -r ~/.config/awesome/calendar -v
+    rm -r ~/.config/awesome/volume-control -v
+    git clone https://github.com/deficient/calendar ~/.config/awesome/calendar
+    git clone https://github.com/deficient/volume-control ~/.config/awesome/volume-control
+fi
+# -----------------------------------------------------------------------------
+
