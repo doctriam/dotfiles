@@ -1,6 +1,15 @@
 #!/bin/bash
 
+# Dotfiles Update
+# Author: Kenneth Haynie
+# Last Updated: 4/4/2020
+
+
+# Code for automatically updating dotfiles and awesome, terminal, and sddm
+# configs
+
+cd $HOME/dotfiles
 git pull -v
-./updateSDDM -v
-cd ~/.config/awesome
+$HOME/dotfiles/sddm/updateSDDM -v
+cd $HOME/.config/awesome
 git pull -v

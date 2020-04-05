@@ -39,4 +39,7 @@ BackgroundImageShading=0.000000
 BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_CENTERED
 BackgroundDarkness=0.220000
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
+ShortcutsNoMenukey=TRUE
+ShortcutsNoMnemonics=TRUE
+ShortcutsNoHelpkey=TRUE
 
