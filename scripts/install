@@ -1,0 +1,76 @@
+#!/bin/bash
+# Installer for dotfiles, sddm, and awesome wm
+
+~/.config/dotfiles/scripts/installdotfiles
+echo -en "\n"
+
+echo "#-------------- Pacman: Install Recommended Software------------------\n"
+packages=(
+awesome
+brave
+cmake
+imagemagick
+scrot
+sddm
+vim
+xclip
+xcompmgr
+xfce4-terminal
+)
+
+for pkg in "${packages[@]}"
+do {
+        if sudo pacman -Qi $pkg > /dev/null 2>&1 ; then
+            echo -en "$pkg already installed\n"
+        else
+            echo -en "Installing $pkg...\n"
+            sudo pacman -S $pkg --noconfirm > /dev/null
+            if pacman -Qi $pkg > /dev/null 2>&1
+            then
+                echo -en "$pkg is now installed\n"
+            else
+                echo -en "Installing $pkg FAILED\n"
+                deps = 1
+            fi
+        fi
+}
+done
+[[ $deps -ne 1  ]] && echo -en "\nSoftware installation complete\n" || { 
+    echo -en "\nCheck for FAILED packages\n";exit 1; 
+}
+echo "#----------END: Install From Pacman-----------------------------------\n"
+echo -en "\n"
+
+
+echo "#-------------- Github: Install Recommended Repos --------------------\n"
+    # Roku CLI
+sudo rm -r $HOME/Downloads/roku-cli -f -v
+git clone https://github.com/ncmiller/roku-cli.git $HOME/Downloads/roku-cli
+sudo python $HOME/Downloads/roku-cli/setup.py install -v
+sudo rm -r $HOME/Downloads/roku-cli -f -v
+
+    # SDDM Theme
+sudo rm -r $HOME/Downloads/abstractdark -v
+sudo rm -r /usr/share/sddm/themes/abstractdark -v
+git clone https://github.com/3ximus/abstractdark-sddm-theme \
+    $HOME/Downloads/abstractdark -v
+sudo mv $HOME/Downloads/abstractdark /usr/share/sddm/themes/abstractdark -v
+$HOME/.config/dotfiles/scripts/updateSDDM
+echo "#----------END: Install From Github-----------------------------------\n"
+echo -en "\n"
+
+
+echo "#-------------- Install Awesome WM Profile ---------------------------\n"
+AWESOMERC=$HOME/.config/awesome/rc.lua
+if [ -f "$AWESOMERC" ]; then
+    echo -en "Awesome WM profile already installed\n"
+else
+    git clone https://github.com/doctriam/awesomerc ~/.config/awesome
+    rm -r ~/.config/awesome/widgets/calendar -f -v
+    rm -r ~/.config/awesome/widgets/volume-control -f -v
+    git clone https://github.com/deficient/calendar \ 
+        ~/.config/awesome/widgets/calendar
+    git clone https://github.com/deficient/volume-control \ 
+        ~/.config/awesome/widgets/volume-control
+fi
+echo "#----------END: Install Awesome WM Profile ---------------------------\n"

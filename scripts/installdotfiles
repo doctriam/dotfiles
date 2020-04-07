@@ -1,0 +1,31 @@
+#!/bin/bash
+# Installer for dotfiles
+
+
+echo "#-------------- Dotfiles/RCs------------------------------------------\n"
+BASHRC=/$HOME/.bashrc
+BASHALIAS=/$HOME/.bash_aliases
+VIMRC=/$HOME/.vimrc
+TERMINALRC=/$HOME/.config/xfce4/terminal/terminalrc
+
+if [ -f "$BASHRC"  ]; then
+    rm $BASHRC -v
+fi
+
+if [ -f "$BASHALIAS"  ]; then
+    rm $BASHALIAS -v
+fi
+
+if [ -f "$VIMRC"  ]; then
+    rm $VIMRC -v
+fi
+
+if [ -f "$TERMINALRC"  ]; then
+    rm $TERMINALRC -v
+fi
+
+ln -s $HOME/.config/dotfiles/.bashrc $BASHRC -v
+ln -s $HOME/.config/dotfiles/.bash_aliases $BASHALIAS -v
+ln -s $HOME/.config/dotfiles/terminalrc $TERMINALRC -v
+ln -s $HOME/.config/dotfiles/.vimrc $VIMRC -v
+echo "#----------END: Dotfiles/RCs------------------------------------------\n"

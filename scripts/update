@@ -8,8 +8,8 @@
 # Code for automatically updating dotfiles and awesome, terminal, and sddm
 # configs
 
-cd $HOME/dotfiles
+cd $HOME/.config/dotfiles
 git pull -v
-$HOME/dotfiles/sddm/updateSDDM -v
+$HOME/.config/dotfiles/scripts/updateSDDM -v
 cd $HOME/.config/awesome
 git pull -v

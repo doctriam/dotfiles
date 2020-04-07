@@ -14,16 +14,15 @@ sudo pacman -S git --noconfirm
 ```
 Download and install
 ```
-git clone https://github.com/doctriam/dotfiles ~/dotfiles
-~/dotfiles/install
+git clone https://github.com/doctriam/dotfiles ~/.config/dotfiles
+~/.config/dotfiles/scripts/install
 ```
 
 ## Update Dotfiles
 Updating these files requires copying into root folders.  I've simplified this
 by adding an update script.  Run the following.
 ```
-cd ~/dotfiles
+cd ~/.config/dotfiles
 git pull
-./updateSDDM
+./scripts/updateSDDM
 ```
-
