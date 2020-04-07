@@ -20,7 +20,6 @@ Plug 'lervag/vimtex'  "Latex Plugin
 Plug 'Valloric/YouCompleteMe'  "Code Autocomplete
 Plug 'vim-syntastic/syntastic'  "Syntax verification
 Plug 'airblade/vim-gitgutter'  "Git In-File Diff Tool
-Plug 'jiangmiao/auto-pairs' "Auto-creates bracket pairs
 Plug 'tmhedberg/SimpylFold'  "Python Fold
 Plug 'vim-scripts/indentpython.vim'  "Python Indent
 Plug 'nvie/vim-flake8'  "Python Style Checker
