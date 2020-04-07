@@ -44,10 +44,13 @@ echo -en "\n"
 
 echo "#-------------- Github: Install Recommended Repos --------------------\n"
     # Roku CLI
-sudo rm -r $HOME/Downloads/roku-cli -f -v
-git clone https://github.com/ncmiller/roku-cli.git $HOME/Downloads/roku-cli
-sudo python $HOME/Downloads/roku-cli/setup.py install -v
-sudo rm -r $HOME/Downloads/roku-cli -f -v
+sudo rm -r ~/Downloads/roku-cli -f -v
+cd $HOME/Downloads
+git clone https://github.com/ncmiller/roku-cli.git roku-cli
+cd roku-cli
+sudo python setup.py install -v
+cd ..
+sudo rm -r ~/Downloads/roku-cli -f -v
 
     # SDDM Theme
 sudo rm -r $HOME/Downloads/abstractdark -v
