@@ -30,6 +30,7 @@ Plug 'ap/vim-css-color'  "CSS Color Display
 Plug 'jnurmine/Zenburn'  "vim theme
 Plug 'junegunn/seoul256.vim'  "lightline theme
 Plug 'itchyny/lightline.vim'  "Stylized Info
+Plug 'chrisbra/Colorizer' "Show HTML color
 call plug#end()
 " ************ PLUGINS ************
 
@@ -45,7 +46,15 @@ let g:ycm_autoclose_preview_window_after_completeion=1
 " lightline
 set laststatus=2
 set noshowmode
-let g:lightline = { 'colorscheme': 'seoul256' }
+let g:lightline = { 
+    \ 'colorscheme': 'seoul256',
+    \ 'active': { 
+    \ 'left': [ 
+        \ [ 'mode', 'paste' ] , 
+        \ [ 'readonly', 'absolutepath', 'modified' ],
+    \ ],
+    \ }
+    \ }
 " keymap for nerdtree
 nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeWinPos='left'
