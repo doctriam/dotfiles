@@ -29,7 +29,7 @@ Plug 'ap/vim-css-color'  "CSS Color Display
 Plug 'jnurmine/Zenburn'  "vim theme
 Plug 'junegunn/seoul256.vim'  "lightline theme
 Plug 'itchyny/lightline.vim'  "Stylized Info
-Plug 'chrisbra/Colorizer' "Show HTML color
+Plug 'lilydjwg/colorizer' "Show HTML color
 call plug#end()
 " ************ PLUGINS ************
 
@@ -134,6 +134,8 @@ nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 " clear search results
 nnoremap <leader>/ :nohlsearch<CR>:let @/=""<CR>
+" enable highlight hex colors
+nnoremap <leader>c :ColorHighlight<Enter>
 " ************ REMAPS ************
 
 
