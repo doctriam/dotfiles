@@ -15,6 +15,8 @@ alias bg='~/.config/awesome/scripts/bgswap.sh'
 alias matlab='matlab -desktop'
 alias roku55='roku 192.168.1.79'
 alias roku43='roku 192.168.1.98'
+alias rclonemnt='rclone mount Box:/khaynie3 $HOME/Documents/Box/khaynie3 &'
+alias box='cd ~/Documents/Box/khaynie3'
 
 #PATH
 export PATH="$PATH:/usr/local/cuda-9.2/bin"
